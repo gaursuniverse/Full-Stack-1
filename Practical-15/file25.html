@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>PRACTICAL-15</title>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="file26.css">
+</head>
+
+<body>
+<div id="mycontainer">
+    <div id = "usflag">
+        <img src="../Images/US%20Flag.jpg" alt="US Flag">
+    </div>
+    <h2>--></h2>
+    <div id = "indianflag">
+        <img src="../Images/Indian%20Flag.jpg" alt="Indian Flag">
+    </div>
+</div>
+
+<div class="quantity">
+    <button class="btn minus-btn disabled" type="button">-</button>
+    <input type="text" id="quantity" value="1">
+    <button class="btn plus-btn" type="button">+</button>
+</div>
+
+<p class="total-price">
+    <span><i class="fa fa-rupee"></i></span>
+    <span id="price">74.08</span>
+</p>
+
+<script>
+    document.querySelector(".minus-btn").setAttribute("disabled", "disabled");
+
+    var valueCount
+
+    var price = document.getElementById("price").innerText;
+
+    function priceTotal() {
+        var total = valueCount * price;
+        document.getElementById("price").innerText = total
+    }
+
+    document.querySelector(".plus-btn").addEventListener("click", function() {
+        valueCount = document.getElementById("quantity").value;
+
+        valueCount++;
+
+        document.getElementById("quantity").value = valueCount;
+
+        if (valueCount > 1) {
+            document.querySelector(".minus-btn").removeAttribute("disabled");
+            document.querySelector(".minus-btn").classList.remove("disabled")
+        }
+
+        priceTotal()
+    })
+
+    document.querySelector(".minus-btn").addEventListener("click", function() {
+        valueCount = document.getElementById("quantity").value;
+
+        valueCount--;
+
+        document.getElementById("quantity").value = valueCount
+
+        if (valueCount == 1) {
+            document.querySelector(".minus-btn").setAttribute("disabled", "disabled")
+        }
+
+        priceTotal()
+    })
+</script>
+
+</body>
+</html>
